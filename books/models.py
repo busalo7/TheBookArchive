@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Book(models.Model):
-	book_name   = models.CharField()
+	book_name   = models.CharField(max_length=20)
 	cover_image = models.ImageField(null=True)
 	book_description = models.TextField(max_length=300, null=True)
 	
@@ -12,3 +12,9 @@ class Book(models.Model):
 		return self.book_name
 
 # Create your models here.
+
+class Page(models.Model):
+	page_image = models.ImageField()
+	page_text = models.TextField()
+	book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
