@@ -9,7 +9,6 @@ class Profile(models.Model):
 	profile_bio = models.TextField(max_length=300, null=True)
 
 
-
 class Book(models.Model):
 	book_name   = models.CharField(max_length=20)
 	cover_image = models.ImageField(null=True)
@@ -19,10 +18,17 @@ class Book(models.Model):
 	def __str__(self):
 		return self.book_name
 
-# Create your models here.
 
 class Page(models.Model):
 	page_image = models.ImageField()
 	page_text = models.TextField()
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
+class FavoriteBook(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+	comment = models.TextField(max_length=300, null=True)
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	book = models.ForeignKey(Book, on_delete=models.CASCADE)

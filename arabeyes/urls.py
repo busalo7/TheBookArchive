@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from api.views import BookListAPIView, BookDetailAPIView, BookCreateAPIView, PageCreateAPIView,  UserCreateAPIView
+from api.views import BookListAPIView, BookDetailAPIView, BookCreateAPIView, PageCreateAPIView,  UserCreateAPIView, LoginAPIView
 
 
 urlpatterns = [
@@ -27,4 +27,7 @@ urlpatterns = [
     path('api/create/', BookCreateAPIView.as_view()),
     path('api/page_create/', PageCreateAPIView.as_view()),
     path('api/register/', UserCreateAPIView.as_view(), name='api_register'),
+    path('api/login/', LoginAPIView.as_view(), name='api_login'),
+
+
    ]
