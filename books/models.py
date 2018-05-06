@@ -24,6 +24,7 @@ class Page(models.Model):
 	page_image = models.ImageField()
 	page_text = models.TextField()
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
+	base64=models.TextField()
 	def __str__(self):
 		return self.book.book_name
 

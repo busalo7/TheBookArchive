@@ -25,6 +25,7 @@ class BookDetailAPIView(RetrieveAPIView):
 class BookCreateAPIView(CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookCreateSerializer
+    
 
 
 class PageCreateAPIView(CreateAPIView):
