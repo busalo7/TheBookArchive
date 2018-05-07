@@ -25,12 +25,18 @@ class BookDetailAPIView(RetrieveAPIView):
 class BookCreateAPIView(CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookCreateSerializer
-    
 
 
-class PageCreateAPIView(CreateAPIView):
+
+'''class PageCreateAPIView(CreateAPIView):
     queryset = Page.objects.all()
+    serializer_class = PageCreateSerializer'''
+
+class PageCreateAPIView(APIView):
     serializer_class = PageCreateSerializer
+
+    def post(self, request):
+        print(request.data)
 
 
 class UserCreateAPIView(CreateAPIView):

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -25,6 +26,7 @@ class Page(models.Model):
 	page_text = models.TextField()
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 	base64=models.TextField()
+
 	def __str__(self):
 		return self.book.book_name
 
@@ -43,3 +45,6 @@ class BookRating(models.Model):
 	rating=models.IntegerField()
 	def __str__(self):
 		return self.book.book_name
+class Like(models.Model):
+	user=models.ForeignKey(User,on_delete=models.CASCADE)
+	book=models.ForeignKey(Book, on_delete=models.CASCADE)
