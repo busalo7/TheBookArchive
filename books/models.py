@@ -22,7 +22,7 @@ class Book(models.Model):
 
 
 class Page(models.Model):
-	page_image = models.ImageField()
+	page_image = models.ImageField(null=True, blank=True)
 	page_text = models.TextField()
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 	base64=models.TextField()

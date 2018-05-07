@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from books.models import Book, Page, Profile, FavoriteBook, Comment,BookRating
 from django.contrib.auth.models import User
+import json
+import base64
 
 
 # Create your views here.
@@ -28,15 +30,31 @@ class BookCreateAPIView(CreateAPIView):
 
 
 
-'''class PageCreateAPIView(CreateAPIView):
+class PageCreateAPIView(CreateAPIView):
     queryset = Page.objects.all()
-    serializer_class = PageCreateSerializer'''
+    serializer_class = PageCreateSerializer
 
-class PageCreateAPIView(APIView):
+'''class PageCreateAPIView(APIView):
     serializer_class = PageCreateSerializer
 
     def post(self, request):
-        print(request.data)
+        img_data = base64.b64decode(request.data.get("base64"))
+        print (img_data)
+        filename = "page_image.gif"
+        print (filename)
+        with open(filename, 'wb') as f:
+            f.write(img_data)
+        print (filename)
+        data = {
+            "base64": request.data.get("base64"),
+            "book": request.data.get("book"),
+            "page_text": request.data.get("page_text"),
+            "page_image":filename
+        }
+        serializer = PageCreateSerializer(data=data)
+        if serializer.is_valid(raise_exception=True):
+            print ("YAY")'''
+
 
 
 class UserCreateAPIView(CreateAPIView):
