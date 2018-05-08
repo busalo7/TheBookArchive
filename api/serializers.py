@@ -12,6 +12,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class FavoriteListSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = FavoriteBook
+        fields = ['user']
+
 class BookListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
@@ -119,12 +126,7 @@ class FavoriteCreateSerializer(serializers.ModelSerializer):
         model = FavoriteBook
         fields = ['book']
 
-class FavoriteListSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
 
-    class Meta:
-        model = FavoriteBook
-        fields = ['user']
 
 class CommentCreateSerializer(serializers.ModelSerializer):
     class Meta:
