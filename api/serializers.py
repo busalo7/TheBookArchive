@@ -20,7 +20,7 @@ class BookListSerializer(serializers.ModelSerializer):
 
 class BookDetailSerializer(serializers.ModelSerializer):
     # pages = serializers.SerializerMethodField()
-    # favs = serializers.SerializerMethodField()
+    favs = serializers.SerializerMethodField()
     # comments = serializers.SerializerMethodField()
     class Meta:
         model = Book
@@ -32,10 +32,10 @@ class BookDetailSerializer(serializers.ModelSerializer):
     #     return json_pages
 
 
-    # def get_favs(self, obj):
-    #     favs = obj.favoritebook_set.all()
-    #     json_favs = FavoriteListSerializer(favs, many=True).data
-    #     return json_favs
+    def get_favs(self, obj):
+        favs = obj.favoritebook_set.all()
+        json_favs = FavoriteListSerializer(favs, many=True).data
+        return json_favs
 
     # def get_comments(self, obj):
     #     comments = obj.comment_set.all()
