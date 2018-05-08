@@ -3,7 +3,6 @@ from .models import Book, Page, BookRating, Profile, FavoriteBook, Comment, Book
 
 admin.site.register(Book)
 admin.site.register(Page)
-admin.site.register(BookRating)
 admin.site.register(Profile)
 admin.site.register(FavoriteBook)
 admin.site.register(Comment)
