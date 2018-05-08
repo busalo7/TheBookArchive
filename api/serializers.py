@@ -19,28 +19,28 @@ class BookListSerializer(serializers.ModelSerializer):
 
 
 class BookDetailSerializer(serializers.ModelSerializer):
-    pages = serializers.SerializerMethodField()
-    favs = serializers.SerializerMethodField()
-    comments = serializers.SerializerMethodField()
+    # pages = serializers.SerializerMethodField()
+    # favs = serializers.SerializerMethodField()
+    # comments = serializers.SerializerMethodField()
     class Meta:
         model = Book
         fields = '__all__'
 
-    def get_pages(self, obj):
-        pages = obj.page_set.all()
-        json_pages = PageListSerializer(pages, many=True).data
-        return json_pages
+    # def get_pages(self, obj):
+    #     pages = obj.page_set.all()
+    #     json_pages = PageListSerializer(pages, many=True).data
+    #     return json_pages
 
 
-    def get_favs(self, obj):
-        favs = obj.favoritebook_set.all()
-        json_favs = FavoriteListSerializer(favs, many=True).data
-        return json_favs
+    # def get_favs(self, obj):
+    #     favs = obj.favoritebook_set.all()
+    #     json_favs = FavoriteListSerializer(favs, many=True).data
+    #     return json_favs
 
-    def get_comments(self, obj):
-        comments = obj.comment_set.all()
-        json_comments = CommentListSerializer(comments, many=True).data
-        return json_comments
+    # def get_comments(self, obj):
+    #     comments = obj.comment_set.all()
+    #     json_comments = CommentListSerializer(comments, many=True).data
+    #     return json_comments
 
 
 class PageListSerializer(serializers.ModelSerializer):
