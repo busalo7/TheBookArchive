@@ -23,6 +23,7 @@ class FavoriteListSerializer(serializers.ModelSerializer):
         fields = ['user']
 
 class BookListSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
     class Meta:
         model = Book
         fields = '__all__'
@@ -32,7 +33,7 @@ class BookDetailSerializer(serializers.ModelSerializer):
     pages = serializers.SerializerMethodField()
     favs = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
-
+    user = UserSerializer()
     class Meta:
         model = Book
         fields = '__all__'
