@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_jwt.settings import api_settings
 from books.models import Book, Page, Profile, FavoriteBook, Comment,BookRating
-from django.http import JsonResponse
 
 
 
@@ -11,6 +10,10 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+'''class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like
+        fields = '__all__'''
 
 class FavoriteListSerializer(serializers.ModelSerializer):
     user = UserSerializer()
