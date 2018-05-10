@@ -34,7 +34,7 @@ class FavoriteBook(models.Model):
 
 class Comment(models.Model):
 	comment = models.TextField(max_length=300, null=True)
-	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
 class BookRating(models.Model):
@@ -44,7 +44,7 @@ class BookRating(models.Model):
 	def __str__(self):
 		return self.book.book_name
 
-		
+
 class Like(models.Model):
 	user=models.ForeignKey(User,on_delete=models.CASCADE)
 	book=models.ForeignKey(Book, on_delete=models.CASCADE)

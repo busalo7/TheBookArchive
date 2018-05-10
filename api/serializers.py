@@ -29,7 +29,7 @@ class BookDetailSerializer(serializers.ModelSerializer):
     pages = serializers.SerializerMethodField()
     favs = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = Book
         fields = '__all__'
@@ -83,6 +83,14 @@ class UserCreateSerializer(serializers.ModelSerializer):
         new_profile = Profile(user=new_user)
         new_profile.save()
 
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+        payload = jwt_payload_handler(new_user)
+        token = jwt_encode_handler(payload)
+
+        validated_data["token"] = token
+
         return validated_data
 
 
@@ -132,11 +140,10 @@ class FavoriteCreateSerializer(serializers.ModelSerializer):
 class CommentCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['book']
+        fields = '__all__'
 
 class CommentListSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
 
     class Meta:
         model = Comment
-        fields = ['user']
+        fields = '__all__'
