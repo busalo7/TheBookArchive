@@ -9,6 +9,7 @@ class Profile(models.Model):
 
 
 class Book(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	book_name   = models.CharField(max_length=255)
 	cover_image = models.ImageField(null=True)
 	book_description = models.TextField(max_length=300, null=True)
