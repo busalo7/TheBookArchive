@@ -5,7 +5,7 @@ djangorestframework==3.8.2
 djangorestframework-jwt==1.11.0
 gunicorn==19.8.1
 Markdown==2.6.11
-Pillow==5.1.0
+Pillow==9.3.0
 psycopg2==2.7.4
 PyJWT==1.6.1
 pytz==2018.4
